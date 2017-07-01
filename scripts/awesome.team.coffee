@@ -34,7 +34,7 @@ module.exports = (robot) ->
       robot.messageRoom room, "Are there any achievements from the week that someone @here needs to add to your board '" + board.name + "'?"
   , null, true, 'America/New_York'
 
-  moodPoll = new CronJob '00 05 20 * * 1-5', ->
+  moodPoll = new CronJob '00 20 20 * * 1-5', ->
     for room, board of robot.brain.data._private.board
       buttonName = "mood_" + robot.brain.data._private.team[room]._id
       pollMessage = {
