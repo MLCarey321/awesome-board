@@ -41,7 +41,7 @@ module.exports = (robot) ->
         message: room
         content:
           text: "How was your day today?"
-          fallback: "Oh no! Something went horribly wrong!"
+          fallback: "Mood Poll Time!"
           callback_id: "dab_mood"
           color: "#3AA3E3"
           attachment_type: "default"
@@ -79,7 +79,7 @@ module.exports = (robot) ->
       message: msg.message
       content:
         text: "How was your day today?"
-        fallback: "Oh no! Something went horribly wrong!"
+        fallback: "Mood Poll Time!"
         callback_id: "dab_mood"
         color: "#3AA3E3"
         attachment_type: "default"
@@ -113,11 +113,11 @@ module.exports = (robot) ->
   robot.respond /global mood poll/i, (msg) ->
     for room, board of robot.brain.data._private.board
       buttonName = "mood_" + robot.brain.data._private.team[room]._id
-      robot.messageRoom 'slack.attachment',
-        message: room
+      robot.emit 'slack.attachment',
+        channel: room
         content:
           text: "How was your day today?"
-          fallback: "Oh no! Something went horribly wrong!"
+          fallback: "Mood Poll Time!"
           callback_id: "dab_mood"
           color: "#3AA3E3"
           attachment_type: "default"
